@@ -1,46 +1,52 @@
 $(function(){
-	$('.top_block').draggable({ revert: true, delay: 200, distance: 20, axis: 'x,y'});
-	$('.top_block').draggable({
-		start: function(event, ui){
-			// console.log(ui.position.left)
-			var directionX = "",
-				directionY = "",
-			    oldx = 0,
-			    oldy = 0,
-			    dir = "";
+	$('.top_block').draggable({ 
+		revert: true, 
+		delay: 0, 
+		distance: 0,
+		dynamic: false,
+		start: function (event, ui) {
+			ui.helper.data('draggableXY.originalPosition', ui.position || {top: 0, left: 0});
+			ui.helper.data('draggableXY.newDrag', true);
+		},
+		drag: function (event, ui) {
+			var originalPosition = ui.helper.data('draggableXY.originalPosition');
+			var deltaX = Math.abs(originalPosition.left - ui.position.left);
+			var deltaY = Math.abs(originalPosition.top - ui.position.top);
 
-        	$.mousedirection();
-			$(this).bind('mousedirection',function(e){
-				$(this).html(e.direction);
-				// console.log(e.pageX)
-				// console.log(e.pageY)
-				// console.log(oldx)
-				// console.log(oldy)
+			var newDrag = false || ui.helper.data('draggableXY.newDrag');
+			ui.helper.data('draggableXY.newDrag', false);
 
-		        // if (e.pageX < oldx) {
-		        //     directionX = "x"
-		        // } else if (e.pageX > oldx) {
-		        //     directionX = "x"
-		        // }
-		        // if (e.pageY < oldy) {
-		        //     directionY = "y"
-		        // } else if (e.pageY > oldy) {
-		        //     directionY = "y"
-		        // }
-		        
-		        // oldx = e.pageX;
-		        // oldy = e.pageY;
+			var xMax = newDrag ? Math.max(deltaX, deltaY) === deltaX : ui.helper.data('draggableXY.xMax');
+			ui.helper.data('draggableXY.xMax', xMax);
 
-		        // dir = (Math.abs(e.pageX) - Math.abs(oldx) > Math.abs(e.pageY) - Math.abs(oldy)) ? "x" : "y";
-		        // console.log(directionX);
-		        // console.log(directionY);
-
-
-			})
+			var newPosition = ui.position;
+			if(xMax) {
+			  newPosition.top = originalPosition.top;
+			}
+			if(!xMax){
+			  newPosition.left = originalPosition.left;
+			}
+			$(this).html('top: ' + newPosition.top + ' left: ' + newPosition.left);
+			return newPosition;
 		},
 		stop: function(){
-			console.log('stop')
-			$(this).unbind('mousedirection');
 		}
 	})
+	// $('.top_block').draggable({
+	// 	start: function(event, ui){
+ //        	$.mousedirection();
+	// 		$(this).bind('mousedirection',function(e){
+	// 			$(this).html(e.direction);
+	// 			if(e.direction == "x"){
+	// 				$(".top_block").draggable( "option", "axis", "x" );
+	// 			}else{
+	// 				$(".top_block").draggable( "option", "axis", "y" );
+	// 			}
+	// 			$(this).unbind('mousedirection');
+	// 		})
+	// 	},
+	// 	stop: function(){
+	// 		$(this).unbind('mousedirection');
+	// 	}
+	//})
 })
