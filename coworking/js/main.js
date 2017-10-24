@@ -1,4 +1,6 @@
 $(function(){
+	var sideToMove;
+	var OFFSETTOBLOCKCHANGE = 300;
 	$('.top_block').draggable({ 
 		revert: true, 
 		delay: 0, 
@@ -9,6 +11,7 @@ $(function(){
 			ui.helper.data('draggableXY.newDrag', true);
 		},
 		drag: function (event, ui) {
+			//set only two axis
 			var originalPosition = ui.helper.data('draggableXY.originalPosition');
 			var deltaX = Math.abs(originalPosition.left - ui.position.left);
 			var deltaY = Math.abs(originalPosition.top - ui.position.top);
@@ -27,9 +30,32 @@ $(function(){
 			  newPosition.left = originalPosition.left;
 			}
 			$(this).html('top: ' + newPosition.top + ' left: ' + newPosition.left);
-			return newPosition;
+			// =======set axis end
+
+			// Continue animate if drag and drop on > 300px
+			if(Math.abs(newPosition.left) > OFFSETTOBLOCKCHANGE){
+			// sideToMove = newPosition.left > 0 ? true : false;
+				// var blockWidth = $(this).width();
+				$(this).draggable( "option", "revert", false);
+				// switch(sideToMove){
+				// 	case true:
+				// 		$(this).animate({left:blockWidth+'px'});
+				// 		break;
+				// 	case false:
+				// 		$(this).animate({left:'-'+blockWidth+'px'});
+				// 		break;
+				// }
+			}
 		},
-		stop: function(){
+		stop: function(event, ui){
+			if(ui.position.left > OFFSETTOBLOCKCHANGE){
+				$(this).animate({left: $(this).outerWidth() + 'px'});
+				$(this).draggable( "option", "revert", true);
+			}else if(ui.position.left < -OFFSETTOBLOCKCHANGE){
+				$(this).animate({left: '-' + $(this).outerWidth() + 'px'});
+				$(this).draggable( "option", "revert", true);
+			}
+
 		}
 	})
 	// $('.top_block').draggable({

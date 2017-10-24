@@ -30,6 +30,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	background: #000;
 }
 ol, ul {
 	list-style: none;
@@ -63,6 +64,19 @@ body{
 	box-sizing: border-box;
 	text-align: center;
 	line-height: 100vh;
+	display: none;
+}
+.top_block.next_item{
+	z-index: 1;
+	display: block;
+    transform-origin: 100% 50%;
+    transform: perspective(500px) translateX(-2%) scale(.9) rotateY(-20deg);
+    opacity: .33;
+}
+.top_block.active{
+	z-index: 2;
+	display: block;
+	transform: translateX(0%);
 }
 .top_gallery{
 	position: absolute;
