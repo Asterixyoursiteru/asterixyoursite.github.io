@@ -73,11 +73,17 @@ body{
     transform: perspective(500px) translateX(-2%) scale(.9) rotateY(-20deg);
     opacity: .33;
 }
+.top_block.next_item.toActive{
+    transform: perspective(0px) translateX(0%) scale(1) rotateY(0deg);
+    opacity: 1;
+    transition: all .5s linear;
+}
 .top_block.active{
 	z-index: 2;
 	display: block;
 	transform: translateX(0%);
 }
+
 .top_gallery{
 	position: absolute;
 	top: 0;

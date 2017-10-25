@@ -1,6 +1,25 @@
 $(function(){
 	var sideToMove;
+	var originalPosition,
+		deltaX,
+		deltaY,
+		newDrag,
+		xMax,
+		newPosition,
+		activeWidth;
 	var OFFSETTOBLOCKCHANGE = 300;
+	var nextItem = $('.next_item'); //====
+	var leftActive;
+
+	// animation of items
+	var cssArr = [];
+	var calcNextItem = function(i, a, reverse){
+		var dragProcent = (activeWidth - leftActive) * 100 / activeWidth;
+		var css = reverse ? 1 - (i * dragProcent / 100) : i * dragProcent / 100;
+		cssArr[a] = css;
+		return css;
+	}
+
 	$('.top_block').draggable({ 
 		revert: true, 
 		delay: 0, 
@@ -12,50 +31,76 @@ $(function(){
 		},
 		drag: function (event, ui) {
 			//set only two axis
-			var originalPosition = ui.helper.data('draggableXY.originalPosition');
-			var deltaX = Math.abs(originalPosition.left - ui.position.left);
-			var deltaY = Math.abs(originalPosition.top - ui.position.top);
+			originalPosition = ui.helper.data('draggableXY.originalPosition');
+			deltaX = Math.abs(originalPosition.left - ui.position.left);
+			deltaY = Math.abs(originalPosition.top - ui.position.top);
 
-			var newDrag = false || ui.helper.data('draggableXY.newDrag');
+			newDrag = false || ui.helper.data('draggableXY.newDrag');
 			ui.helper.data('draggableXY.newDrag', false);
 
-			var xMax = newDrag ? Math.max(deltaX, deltaY) === deltaX : ui.helper.data('draggableXY.xMax');
+			xMax = newDrag ? Math.max(deltaX, deltaY) === deltaX : ui.helper.data('draggableXY.xMax');
 			ui.helper.data('draggableXY.xMax', xMax);
 
-			var newPosition = ui.position;
+			newPosition = ui.position;
 			if(xMax) {
 			  newPosition.top = originalPosition.top;
 			}
 			if(!xMax){
 			  newPosition.left = originalPosition.left;
 			}
-			$(this).html('top: ' + newPosition.top + ' left: ' + newPosition.left);
-			// =======set axis end
+			// =======set axis end================================================================
 
-			// Continue animate if drag and drop on > 300px
+			$(this).html('top: ' + newPosition.top + ' left: ' + newPosition.left);
+			// if >300px to both direction - revert false
 			if(Math.abs(newPosition.left) > OFFSETTOBLOCKCHANGE){
-			// sideToMove = newPosition.left > 0 ? true : false;
-				// var blockWidth = $(this).width();
 				$(this).draggable( "option", "revert", false);
-				// switch(sideToMove){
-				// 	case true:
-				// 		$(this).animate({left:blockWidth+'px'});
-				// 		break;
-				// 	case false:
-				// 		$(this).animate({left:'-'+blockWidth+'px'});
-				// 		break;
-				// }
 			}
+
+			leftActive = Math.abs(parseInt($(this).css('left')));
+			activeWidth = $(this).outerWidth();
+			sideToMove = newPosition.left > 0 ? 'right' : 'left';
+			switch(sideToMove){
+				case 'right':
+					console.log('right');
+					break;
+				case 'left':
+					nextItem.attr('style','transform: perspective(500px) translateX(' + calcNextItem(-2, 0) + '%) scale(' + calcNextItem(0.1, 1, true) + ') rotateY(' + calcNextItem(-20, 2) + 'deg); opacity: ' + calcNextItem(0.33, 3, true));
+					break;
+			}
+
 		},
 		stop: function(event, ui){
-			if(ui.position.left > OFFSETTOBLOCKCHANGE){
-				$(this).animate({left: $(this).outerWidth() + 'px'});
-				$(this).draggable( "option", "revert", true);
-			}else if(ui.position.left < -OFFSETTOBLOCKCHANGE){
-				$(this).animate({left: '-' + $(this).outerWidth() + 'px'});
+			// Continue animate ACTIVE if drag and drop on > 300px
+
+  			console.log(cssArr)
+			if(Math.abs(ui.position.left) > OFFSETTOBLOCKCHANGE){
+				switch(sideToMove){
+					case 'right':
+						$(this).animate({left: $(this).outerWidth() + 'px'},500);
+						break;
+					case 'left':
+						nextItem.addClass('toActive').attr('style','');
+						$(this).animate({left: '-' + $(this).outerWidth() + 'px'},500, function(){
+							// nextItem.removeClass('next_item toActive').addClass('active');
+						});
+						// var translateX = $(this).css('translateX');
+						// var rotateY = $(this).css('rotateY');
+						// var scale = $(this).css('scale');
+						// var opacity = $(this).css('opacity');
+						// nextItem.attr('style','transform: perspective(500px)' + 
+						// 			+ 'translateX('	+ calcNextItem(cssArr[0], 0) + '%)' + 
+						// 			+' scale(' + calcNextItem(cssArr[1], 1, true) +
+						// 			+ ') rotateY(' + calcNextItem(cssArr[2], 2) + 'deg); opacity: ' + calcNextItem(cssArr[3], 3, true));
+						// nextItem.animate({opacity:'1', transform:'translateX(0%)'});
+						break;
+				}
 				$(this).draggable( "option", "revert", true);
 			}
 
+			if(Math.abs(ui.position.left) < OFFSETTOBLOCKCHANGE){
+				$(this).animate({left: '0px'});
+				$(this).draggable( "option", "revert", true);
+			}
 		}
 	})
 	// $('.top_block').draggable({
