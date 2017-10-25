@@ -7,17 +7,21 @@ $(function(){
 		xMax,
 		newPosition,
 		activeWidth;
-	var OFFSETTOBLOCKCHANGE = 300;
-	var nextItem; //====
+	var OFFSETTOBLOCKCHANGE = 300,
+		NOBLOCKONSIDESPEED = 10;
+	var nextItem,
+		prevItem;
 	var leftActive;
 
 	// animation of items
-	var cssArr = [];
 	var calcNextItem = function(i, a, reverse){
 		var dragProcent = (activeWidth - leftActive) * 100 / activeWidth;
 		var css = reverse ? 1 - (i * dragProcent / 100) : i * dragProcent / 100;
-		cssArr[a] = css;
 		return css;
+	}
+	var calcPrevItem = function(){
+		var left = -activeWidth + leftActive;
+		return left;
 	}
 
 	$('.top_block').draggable({ 
@@ -50,22 +54,31 @@ $(function(){
 			}
 			// =======set axis end================================================================
 
-			$(this).html('top: ' + newPosition.top + ' left: ' + newPosition.left);
+			$(this).find('span').html('top: ' + newPosition.top + ' left: ' + newPosition.left);
 			// if >300px to both direction - revert false
 			if(Math.abs(newPosition.left) > OFFSETTOBLOCKCHANGE){
 				$(this).draggable( "option", "revert", false);
 			}
 
 			nextItem = $('.next_item');
+			prevItem = $('.prev_item');
 			leftActive = Math.abs(parseInt($(this).css('left')));
 			activeWidth = $(this).outerWidth();
 			sideToMove = newPosition.left > 0 ? 'right' : 'left';
 			switch(sideToMove){
 				case 'right':
-					console.log('right');
+					if(!prevItem.length){
+						ui.position.left /= NOBLOCKONSIDESPEED;
+					}else{
+						prevItem.attr('style', 'left: ' + calcPrevItem() + 'px')
+					}
 					break;
 				case 'left':
-					nextItem.attr('style','transform: perspective(500px) translateX(' + calcNextItem(-2, 0) + '%) scale(' + calcNextItem(0.1, 1, true) + ') rotateY(' + calcNextItem(-20, 2) + 'deg); opacity: ' + calcNextItem(0.33, 3, true));
+					if(!nextItem.length){
+						ui.position.left /= NOBLOCKONSIDESPEED;
+					}else{
+						nextItem.attr('style','transform: perspective(500px) translateX(' + calcNextItem(-2, 0) + '%) scale(' + calcNextItem(0.1, 1, true) + ') rotateY(' + calcNextItem(-20, 2) + 'deg); opacity: ' + calcNextItem(0.33, 3, true));
+					}
 					break;
 			}
 
@@ -73,32 +86,25 @@ $(function(){
 		stop: function(event, ui){
 			nextItem = $('.next_item');
 			// Continue animate ACTIVE if drag and drop on > 300px
-
-  			console.log(cssArr)
 			if(Math.abs(ui.position.left) > OFFSETTOBLOCKCHANGE){
 				switch(sideToMove){
 					case 'right':
-						$(this).animate({left: $(this).outerWidth() + 'px'},500);
+						prevItem.addClass('toActive').attr('style','');
+						$(this).animate({left: $(this).outerWidth() + 'px'},500, function(){
+							prevItem.removeClass('prev_item toActive').addClass('active').prev().addClass('prev_item')
+							prevItem.next().removeClass('active').addClass('next_item').next().removeClass('next_item');
+						});
 						break;
 					case 'left':
 						nextItem.addClass('toActive').attr('style','');
 						$(this).animate({left: '-' + $(this).outerWidth() + 'px'},500, function(){
 							nextItem.removeClass('next_item toActive').addClass('active').next().addClass('next_item');
+							nextItem.prev().removeClass('active').addClass('prev_item').prev().removeClass('prev_item');
 						});
-						// var translateX = $(this).css('translateX');
-						// var rotateY = $(this).css('rotateY');
-						// var scale = $(this).css('scale');
-						// var opacity = $(this).css('opacity');
-						// nextItem.attr('style','transform: perspective(500px)' + 
-						// 			+ 'translateX('	+ calcNextItem(cssArr[0], 0) + '%)' + 
-						// 			+' scale(' + calcNextItem(cssArr[1], 1, true) +
-						// 			+ ') rotateY(' + calcNextItem(cssArr[2], 2) + 'deg); opacity: ' + calcNextItem(cssArr[3], 3, true));
-						// nextItem.animate({opacity:'1', transform:'translateX(0%)'});
 						break;
 				}
 				$(this).draggable( "option", "revert", true);
 			}
-
 			if(Math.abs(ui.position.left) < OFFSETTOBLOCKCHANGE){
 				$(this).animate({left: '0px'});
 				$(this).draggable( "option", "revert", true);
