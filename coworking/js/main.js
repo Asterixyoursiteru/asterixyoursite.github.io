@@ -8,7 +8,7 @@ $(function(){
 		newPosition,
 		activeWidth;
 	var OFFSETTOBLOCKCHANGE = 300;
-	var nextItem = $('.next_item'); //====
+	var nextItem; //====
 	var leftActive;
 
 	// animation of items
@@ -55,7 +55,8 @@ $(function(){
 			if(Math.abs(newPosition.left) > OFFSETTOBLOCKCHANGE){
 				$(this).draggable( "option", "revert", false);
 			}
-
+			
+			nextItem = $('.next_item');
 			leftActive = Math.abs(parseInt($(this).css('left')));
 			activeWidth = $(this).outerWidth();
 			sideToMove = newPosition.left > 0 ? 'right' : 'left';
@@ -70,6 +71,7 @@ $(function(){
 
 		},
 		stop: function(event, ui){
+			nextItem = $('.next_item');
 			// Continue animate ACTIVE if drag and drop on > 300px
 
   			console.log(cssArr)
@@ -81,7 +83,7 @@ $(function(){
 					case 'left':
 						nextItem.addClass('toActive').attr('style','');
 						$(this).animate({left: '-' + $(this).outerWidth() + 'px'},500, function(){
-							// nextItem.removeClass('next_item toActive').addClass('active');
+							nextItem.removeClass('next_item toActive').addClass('active');
 						});
 						// var translateX = $(this).css('translateX');
 						// var rotateY = $(this).css('rotateY');
