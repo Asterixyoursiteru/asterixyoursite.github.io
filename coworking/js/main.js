@@ -55,7 +55,7 @@ $(function(){
 			if(Math.abs(newPosition.left) > OFFSETTOBLOCKCHANGE){
 				$(this).draggable( "option", "revert", false);
 			}
-			
+
 			nextItem = $('.next_item');
 			leftActive = Math.abs(parseInt($(this).css('left')));
 			activeWidth = $(this).outerWidth();
@@ -83,7 +83,7 @@ $(function(){
 					case 'left':
 						nextItem.addClass('toActive').attr('style','');
 						$(this).animate({left: '-' + $(this).outerWidth() + 'px'},500, function(){
-							nextItem.removeClass('next_item toActive').addClass('active');
+							nextItem.removeClass('next_item toActive').addClass('active').next().addClass('next_item');
 						});
 						// var translateX = $(this).css('translateX');
 						// var rotateY = $(this).css('rotateY');
