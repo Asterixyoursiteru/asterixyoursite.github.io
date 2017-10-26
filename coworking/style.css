@@ -78,7 +78,7 @@ body{
     opacity: 1;
     transition: all .5s linear;
 }
-.top_block.active{
+.top_block.active_drag{
 	z-index: 3;
 	display: block;
 	transform: translateX(0%);

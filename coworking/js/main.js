@@ -23,8 +23,18 @@ $(function(){
 		var left = -activeWidth + leftActive;
 		return left;
 	}
+	var updateGalleryClasses = function(item){
+		if(item.hasClass('prev_item')){
+			item.removeClass('prev_item toActive').addClass('active_drag').draggable(draggableOptions).prev().addClass('prev_item')
+			item.next().removeClass('active_drag').draggable("destroy").addClass('next_item').next().removeClass('next_item');
+		}
+		if(item.hasClass('next_item')){
+			item.removeClass('next_item toActive').addClass('active_drag').draggable(draggableOptions).next().addClass('next_item');
+			item.prev().removeClass('active_drag').draggable("destroy") .addClass('prev_item').prev().removeClass('prev_item');
+		}
 
-	$('.top_block').draggable({ 
+	}
+	var draggableOptions = { 
 		revert: true, 
 		delay: 0, 
 		distance: 0,
@@ -55,17 +65,20 @@ $(function(){
 			// =======set axis end================================================================
 
 			$(this).find('span').html('top: ' + newPosition.top + ' left: ' + newPosition.left);
+
 			// if >300px to both direction - revert false
 			if(Math.abs(newPosition.left) > OFFSETTOBLOCKCHANGE){
 				$(this).draggable( "option", "revert", false);
 			}
 
+			// ANIMATE WHILE DRAGGING
 			nextItem = $('.next_item');
 			prevItem = $('.prev_item');
 			leftActive = Math.abs(parseInt($(this).css('left')));
 			activeWidth = $(this).outerWidth();
 			sideToMove = newPosition.left > 0 ? 'right' : 'left';
 			switch(sideToMove){
+				// IF MOVE BLOCK TO RIGHT SIDE
 				case 'right':
 					if(!prevItem.length){
 						ui.position.left /= NOBLOCKONSIDESPEED;
@@ -73,6 +86,7 @@ $(function(){
 						prevItem.attr('style', 'left: ' + calcPrevItem() + 'px')
 					}
 					break;
+				// IF MOVE BLOCK TO left SIDE
 				case 'left':
 					if(!nextItem.length){
 						ui.position.left /= NOBLOCKONSIDESPEED;
@@ -84,48 +98,43 @@ $(function(){
 
 		},
 		stop: function(event, ui){
-			nextItem = $('.next_item');
 			// Continue animate ACTIVE if drag and drop on > 300px
+			nextItem = $('.next_item');
 			if(Math.abs(ui.position.left) > OFFSETTOBLOCKCHANGE){
 				switch(sideToMove){
 					case 'right':
 						prevItem.addClass('toActive').attr('style','');
 						$(this).animate({left: $(this).outerWidth() + 'px'},500, function(){
-							prevItem.removeClass('prev_item toActive').addClass('active').prev().addClass('prev_item')
-							prevItem.next().removeClass('active').addClass('next_item').next().removeClass('next_item');
+							updateGalleryClasses(prevItem);
 						});
 						break;
 					case 'left':
 						nextItem.addClass('toActive').attr('style','');
 						$(this).animate({left: '-' + $(this).outerWidth() + 'px'},500, function(){
-							nextItem.removeClass('next_item toActive').addClass('active').next().addClass('next_item');
-							nextItem.prev().removeClass('active').addClass('prev_item').prev().removeClass('prev_item');
+							updateGalleryClasses(nextItem);
 						});
 						break;
 				}
 				$(this).draggable( "option", "revert", true);
-			}
-			if(Math.abs(ui.position.left) < OFFSETTOBLOCKCHANGE){
+			}else{
 				$(this).animate({left: '0px'});
 				$(this).draggable( "option", "revert", true);
 			}
 		}
+	}
+	$('.active_drag').draggable(draggableOptions);
+
+	// GALLERY ARROWS CONTROLL
+	$('.top_gallery_arrow_right').click(function(){
+		$('.top_block.next_item').addClass('toActive');
+		$('.top_block.active_drag').animate({left: '-' + $('.top_block.active_drag').outerWidth() + 'px'}, function(){
+			updateGalleryClasses($('.top_block.next_item'));
+		})
 	})
-	// $('.top_block').draggable({
-	// 	start: function(event, ui){
- //        	$.mousedirection();
-	// 		$(this).bind('mousedirection',function(e){
-	// 			$(this).html(e.direction);
-	// 			if(e.direction == "x"){
-	// 				$(".top_block").draggable( "option", "axis", "x" );
-	// 			}else{
-	// 				$(".top_block").draggable( "option", "axis", "y" );
-	// 			}
-	// 			$(this).unbind('mousedirection');
-	// 		})
-	// 	},
-	// 	stop: function(){
-	// 		$(this).unbind('mousedirection');
-	// 	}
-	//})
+	$('.top_gallery_arrow_left').click(function(){
+		$('.top_block.prev_item').addClass('toActive');
+		$('.top_block.active_drag').animate({right: + $('.top_block.active_drag').outerWidth() + 'px'}, function(){
+			updateGalleryClasses($('.top_block.prev_item'));
+		})
+	})
 })
