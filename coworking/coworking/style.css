@@ -1,0 +1,164 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+	background: #000;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/*END*/
+
+body{
+	font-family: arial;
+}
+.top_block{
+	background-color: #ccc;
+	z-index: 50;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border: 2px solid green;
+	box-sizing: border-box;
+	text-align: center;
+	line-height: 100vh;
+	display: none;
+}
+.top_block.next_item{
+	z-index: 1;
+	display: block;
+    transform-origin: 100% 50%;
+    transform: perspective(500px) translateX(-2%) scale(.9) rotateY(-20deg);
+    opacity: .33;
+}
+.top_block.next_item.toActive{
+    transform: perspective(0px) translateX(0%) scale(1) rotateY(0deg);
+    opacity: 1;
+    transition: all .5s linear;
+}
+.top_block.active_drag{
+	z-index: 3;
+	display: block;
+	transform: translateX(0%);
+}
+.top_block.prev_item{
+	z-index: 2;
+	display: block;
+}
+.top_block.prev_item.toActive{
+	left: 0;
+    transition: all .5s linear;
+}
+
+.top_gallery{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	padding-top: 40px;
+	box-sizing: border-box;
+	z-index: 50;
+	overflow: hidden;
+}
+.top_block_wrapper{
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+.top_nav{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 40px;
+	width: 100%;
+	z-index: 100;
+}
+.top_nav ul li{
+	display: inline-block;
+	width: 20%;
+	vertical-align: top;
+	text-align: center;
+	background: #fff;
+	padding: 10px 0;
+	border-top: 2px solid #000;
+	border-right: 2px solid #000;
+	border-bottom: 2px solid #000;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+.top_nav ul li a{
+	text-transform: uppercase;
+	text-decoration: none;
+	font-size: 14px;
+	line-height: 14px;
+	color: #000;
+}
+.top_gallery_arrows{
+	position: absolute;
+	top: 50%;
+	left: 0;
+	right: 0;
+	margin-top: -10px;
+	width: 100%;
+	z-index: 50;
+}
+.top_gallery_arrows>div{
+	position: absolute;
+	top: 0;
+	width: 20px;
+	height: 20px;
+	background: #fff;
+	text-align: center;
+	line-height: 20px;
+	border: 2px solid #000;
+	cursor: pointer;
+}
+.top_gallery_arrows>div:first-child{
+	left: 0;
+}
+.top_gallery_arrows>div:last-child{
+	right: 0;
+}

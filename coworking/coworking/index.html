@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Coworking</title>
+	<!-- <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css"> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+		  $(window).load(function() {
+		    $('#preloader').fadeOut('slow', function() {});
+		  });
+		});
+	</script>
+	<style type="text/css">
+		#preloader {
+		  position: fixed;
+		  left: 0;
+		  top: 0;
+		  z-index: 999;
+		  width: 100%;
+		  height: 100%;
+		  overflow: visible;
+		  background: #fff url('//cdnjs.cloudflare.com/ajax/libs/file-uploader/3.7.0/processing.gif') no-repeat center center;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div id="preloader"></div>
+	<nav class="top_nav">
+		<ul>
+		   <li><a href="#coworking">Коворкинг</a></li><!--
+		--><li><a href="#offices">Офисы</a></li><!--
+		--><li><a href="#virtual-office">Виртуальный офис</a></li><!--
+		--><li><a href="#event-platform">Ивент-площадка</a></li><!--
+		--><li><a href="#contacts">Контакты</a></li>
+		</ul>
+	</nav>
+	<div class="top_gallery">
+		<div class="top_block_wrapper">
+			<div class="top_block active_drag" id="coworking">1 <span>test</span></div>
+			<div class="top_block next_item" id="offices">2 <span>test</span></div>
+			<div class="top_block" id="virtual-office">3 <span>test</span></div>
+			<div class="top_block" id="event-platform">4 <span>test</span></div>
+			<div class="top_block" id="contacts">5 <span>test</span></div>
+		</div>
+		<div class="top_gallery_arrows">
+			<div class="top_gallery_arrow_left"><</div>
+			<div class="top_gallery_arrow_right">></div>
+		</div>
+	</div>
+	<!-- <script type="text/javascript" src="js/jquery-ui.min.js"></script> -->
+	<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
