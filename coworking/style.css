@@ -59,7 +59,7 @@ body{
 	height: 100%;
 	position: absolute;
 	top: 0;
-	left: 0;
+	left: 100%;
 	border: 2px solid green;
 	box-sizing: border-box;
 	text-align: center;
@@ -72,6 +72,7 @@ body{
     transform-origin: 100% 50%;
     transform: perspective(500px) translateX(-2%) scale(.9) rotateY(-20deg);
     opacity: .33;
+    left: 0;
 }
 .top_block.next_item.toActive{
     transform: perspective(0px) translateX(0%) scale(1) rotateY(0deg);
@@ -81,17 +82,26 @@ body{
 .top_block.active_drag{
 	z-index: 3;
 	display: block;
+	left: 0;
 	transform: translateX(0%);
+}
+.top_block.active_drag.toActive{
+	left: -100%;
+    transition: all .5s linear;
 }
 .top_block.prev_item{
 	z-index: 2;
+	left: -100%;
 	display: block;
 }
 .top_block.prev_item.toActive{
 	left: 0;
     transition: all .5s linear;
 }
-
+.top_block.toActiveForce{
+	left: 0 !important;
+    transition: all .5s linear;
+}
 .top_gallery{
 	position: absolute;
 	top: 0;
@@ -122,18 +132,20 @@ body{
 	vertical-align: top;
 	text-align: center;
 	background: #fff;
-	padding: 10px 0;
 	border-top: 2px solid #000;
 	border-right: 2px solid #000;
 	border-bottom: 2px solid #000;
 	box-sizing: border-box;
 	cursor: pointer;
+	height: 40px;
 }
 .top_nav ul li a{
+    display: block;
 	text-transform: uppercase;
 	text-decoration: none;
 	font-size: 14px;
-	line-height: 14px;
+    height: 40px;
+    line-height: 40px;
 	color: #000;
 }
 .top_gallery_arrows{
