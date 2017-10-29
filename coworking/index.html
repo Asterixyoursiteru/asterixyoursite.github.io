@@ -32,6 +32,7 @@
 </head>
 <body>
 	<div id="preloader"></div>
+	<div id="ajaxloader"></div>
 	<nav class="top_nav">
 		<ul>
 		   <li><a href="#coworking">Коворкинг</a></li><!--
@@ -42,12 +43,52 @@
 		</ul>
 	</nav>
 	<div class="top_gallery">
-		<div class="top_block_wrapper">
-			<div class="top_block active_drag" id="coworking">1 <span>test</span></div>
-			<div class="top_block next_item" id="offices">2 <span>test</span></div>
-			<div class="top_block" id="virtual-office">3 <span>test</span></div>
-			<div class="top_block" id="event-platform">4 <span>test</span></div>
-			<div class="top_block" id="contacts">5 <span>test</span></div>
+		<div class="block_wrapper">
+			<div class="block active_drag" id="coworking">
+				<div class="top_block inner_block active_inner">1 <span>test</span></div>
+				<div class="inner_block next_inner_item load_page">
+					test
+				</div>
+				<div class="inner_block load_page red">
+					test
+				</div>
+			</div>
+			<div class="block next_item" id="offices">
+				<div class="top_block inner_block active_inner">2 <span>test</span></div>
+				<div class="inner_block next_inner_item load_page">
+					test
+				</div>
+				<div class="inner_block load_page red">
+					test
+				</div>
+			</div>
+			<div class="block" id="virtual-office">
+				<div class="top_block inner_block active_inner">3 <span>test</span></div>
+				<div class="inner_block next_inner_item load_page">
+					test
+				</div>
+				<div class="inner_block load_page red">
+					test
+				</div>
+			</div>
+			<div class="block" id="event-platform">
+				<div class="top_block inner_block active_inner">4 <span>test</span></div>
+				<div class="inner_block next_inner_item load_page">
+					test
+				</div>
+				<div class="inner_block load_page red">
+					test
+				</div>
+			</div>
+			<div class="block" id="contacts">
+				<div class="top_block inner_block active_inner">5 <span>test</span></div>
+				<div class="inner_block next_inner_item load_page">
+					test
+				</div>
+				<div class="inner_block load_page red">
+					test
+				</div>
+			</div>
 		</div>
 		<div class="top_gallery_arrows">
 			<div class="top_gallery_arrow_left"><</div>
