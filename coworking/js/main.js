@@ -19,6 +19,7 @@ $(function(){
 		nextInnerItem,
 		prevInnerItem,
 		speedOfActive;
+	var attr;
 
 	// animation of items
 	var calcNextItem = function(i, a, reverse){
@@ -115,8 +116,6 @@ $(function(){
 			}
 			// =======set axis end================================================================
 
-			$(this).find('span').html('top: ' + newPosition.top + ' left: ' + newPosition.left);
-
 			// if >300px to both direction - revert false
 			if(Math.abs(newPosition.left) > OFFSETTOBLOCKCHANGE){
 				$(this).draggable( "option", "revert", false);
@@ -165,11 +164,19 @@ $(function(){
 					break;
 				// IF MOVE BLOCK TO TOP SIDE
 				case 'top':
-				console.log('ssssss')
 					thisInnerItem = $(this).find('.active_inner');
 					nextInnerItem = thisInnerItem.next('.next_inner_item');
+					attr = nextInnerItem.attr('data-to-load');
 					if(!nextInnerItem.length){
 						ui.position.top /= NOBLOCKONSIDESPEED;
+					}else if(typeof attr !== typeof undefined && attr !== false){
+						speedOfActive = ui.position.top / 2 * -1;
+						thisInnerItem.css({top: speedOfActive});
+						var ajaxloader = $('#ajaxloader');
+						var offsetAjaxloader = thisInnerItem.height() - parseInt(thisInnerItem.css('top'))*2 + $('.top_nav').height();
+						var heightAjaxloader = thisInnerItem.height() + $('.top_nav').height() - offsetAjaxloader;
+						ajaxloader.css({visibility: 'visible', opacity: '1', top: offsetAjaxloader, height: heightAjaxloader})
+						nextInnerItem.css({zIndex: '5'});
 					}else{
 						speedOfActive = ui.position.top / 2 * -1;
 						thisInnerItem.css({top: speedOfActive});
@@ -184,6 +191,7 @@ $(function(){
 			prevItem = $('.prev_item');
 			// checkItemOnContinue(prevItem.prev());
 			if(Math.abs(ui.position.left) > OFFSETTOBLOCKCHANGE){
+				console.log('1');
 				switch(sideToMoveX){
 					case 'right':
 						prevItem.addClass('toActive').attr('style','');
@@ -204,6 +212,7 @@ $(function(){
 				}
 				$(this).draggable( "option", "revert", true);
 			}else if(Math.abs(ui.position.top) > OFFSETTOBLOCKCHANGE){
+				console.log('2');
 				switch(sideToMoveY){
 					// IF MOVE BLOCK TO BOTTOM SIDE
 					case 'bottom':
@@ -211,20 +220,34 @@ $(function(){
 						break;
 					// IF MOVE BLOCK TO TOP SIDE
 					case 'top':
+						if(typeof attr !== typeof undefined && attr !== false){
+							nextInnerItem.load('ajax/1.html', function(){
+								$('#ajaxloader').fadeOut(function(){
+									$('#ajaxloader').attr('style','');
+								});
+								$(this).removeAttr('data-to-load');
+							});
+						}
 						updateAxisYGallery(nextInnerItem);
 						break;
 				}
 			}else if(Math.abs(ui.position.left) <= OFFSETTOBLOCKCHANGE && Math.abs(ui.position.left) !== 0){
-				console.log(ui.position.top)
-				console.log(ui.position.left)
+				console.log('3');
 				$(this).animate({left: '0px'},500, function(){
 					$(this).attr('style','');
 					nextItem.attr('style','');
 					prevItem.attr('style','');
 				});
 			}else if(Math.abs(ui.position.top) <= OFFSETTOBLOCKCHANGE && Math.abs(ui.position.top) !== 0){
-				console.log(ui.position.top)
-				console.log(ui.position.left)
+				console.log('4');
+				if(typeof attr !== typeof undefined && attr !== false){
+					nextInnerItem.load('ajax/1.html', function(){
+						$('#ajaxloader').animate({top: '100%'},function(){
+							$('#ajaxloader').attr('style','');
+						});
+						$(this).removeAttr('data-to-load');
+					});
+				}
 				thisInnerItem.animate({top: '0px'},500, function(){
 					thisInnerItem.attr('style','').next().attr('style','');
 					thisInnerItem.prev().attr('style','');

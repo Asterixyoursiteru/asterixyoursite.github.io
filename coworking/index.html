@@ -45,11 +45,20 @@
 	<div class="top_gallery">
 		<div class="block_wrapper">
 			<div class="block active_drag" id="coworking">
-				<div class="top_block inner_block active_inner">1 <span>test</span></div>
-				<div class="inner_block next_inner_item load_page">
+				<div class="top_block inner_block active_inner">
+					<div id="anim_block_1"><div></div><div></div></div>
+					<div id="anim_block_2"><div><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
+					<div id="anim_block_3"><div></div><div></div></div>
+					<div class="tob_block_text">
+						<div class="top_block_title"><h1>Таблица</h1></div>
+						<p>новое рабочее пространство в центре Москвы, созданное с тщательным подходом к оформлению и планировкам</p>
+						<p>это новый уровень офиса, где хочется создавать, работать и развиваться</p>
+					</div>
+				</div>
+				<div class="inner_block next_inner_item" data-to-load="1.html">
 					test
 				</div>
-				<div class="inner_block load_page red">
+				<div class="inner_block red" data-to-load="1.html">
 					test
 				</div>
 			</div>
@@ -91,8 +100,8 @@
 			</div>
 		</div>
 		<div class="top_gallery_arrows">
-			<div class="top_gallery_arrow_left"><</div>
-			<div class="top_gallery_arrow_right">></div>
+			<div class="top_gallery_arrow_left"></div>
+			<div class="top_gallery_arrow_right"></div>
 		</div>
 	</div>
 	<!-- <script type="text/javascript" src="js/jquery-ui.min.js"></script> -->
