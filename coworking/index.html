@@ -12,7 +12,11 @@
 	<script type="text/javascript">
 		jQuery(document).ready(function($) {
 		  $(window).load(function() {
-		    $('#preloader').fadeOut('slow', function() {});
+		    $('#preloader').fadeOut('slow', function() {
+		    	if($('.top_block').hasClass('active_inner')){
+		    		$('.anim_top_block_wrapper>div').addClass('anim');
+		    	}
+		    });
 		  });
 		});
 	</script>
@@ -46,61 +50,82 @@
 		<div class="block_wrapper">
 			<div class="block active_drag" id="coworking">
 				<div class="top_block inner_block active_inner">
-					<div id="anim_block_1"><div></div><div></div></div>
-					<div id="anim_block_2"><div><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
-					<div id="anim_block_3"><div></div><div></div></div>
-					<div id="anim_block_4">
-						<svg width="150" height="150">
-							<path stroke="black" fill="white" stroke-width="4" d="M 50,0 L 100,0 100,100 150,100 150,150 0,150 0,100 50,100 z"/>
-							<!-- <path stroke="white" fill="white" stroke-width="4" d="M 54,4 L 96,4 96,104 146,104 146,146 4,146 4,104 54,104 z"/> -->
-							<path stroke="black" fill="black" stroke-width="2" d="M 3,100 v 150" />
-							<path stroke="black" fill="black" stroke-width="2" d="M 147,100 v 150" />
-							<path stroke="black" fill="black" stroke-width="2" d="M 0,147 h 150" />
-							<path stroke="black" fill="black" stroke-width="2" d="M 50,3 h 50" />
-							<path stroke="black" fill="white" fill-opacity="0" stroke-width="4" d="M 25,150 L 0,125 25,100 M 50,150 L 25,125 50,100 M 75,150 L 50,125 75,100 50,75 75,50, 50,25 75,0 M 100,150 L 75,125 100,100 75,75 100,50, 75,25 100,0 M 125,150 L 100,125 125,100 M 150,150 L 125,125 150,100"/>
-						</svg>
+					<div class="anim_top_block_wrapper">
+						<div id="anim_block_1">
+							<div></div>
+							<div></div>
+						</div>
+						<div id="anim_block_2">
+							<div>
+								<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+							</div>
+						</div>
+						<div id="anim_block_3">
+							<div></div>
+							<div></div>
+						</div>
+						<div id="anim_block_4">
+							<svg width="150" height="150">
+								<path stroke="black" fill="white" stroke-width="4" d="M 50,0 L 100,0 100,100 150,100 150,150 0,150 0,100 50,100 z"/>
+								<!-- <path stroke="white" fill="white" stroke-width="4" d="M 54,4 L 96,4 96,104 146,104 146,146 4,146 4,104 54,104 z"/> -->
+								<path stroke="black" fill="black" stroke-width="2" d="M 3,100 v 150" />
+								<path stroke="black" fill="black" stroke-width="2" d="M 147,100 v 150" />
+								<path stroke="black" fill="black" stroke-width="2" d="M 0,147 h 150" />
+								<path stroke="black" fill="black" stroke-width="2" d="M 50,3 h 50" />
+								<path stroke="black" fill="white" fill-opacity="0" stroke-width="4" d="M 25,150 L 0,125 25,100 M 50,150 L 25,125 50,100 M 75,150 L 50,125 75,100 50,75 75,50, 50,25 75,0 M 100,150 L 75,125 100,100 75,75 100,50, 75,25 100,0 M 125,150 L 100,125 125,100 M 150,150 L 125,125 150,100"/>
+							</svg>
+						</div>
+						<div id="anim_block_5">
+							<svg width="50" height="50">
+								<path stroke="black" fill="white" stroke-width="8" d="M 0,0 L 0,0 50,0 50,50 0,50 z" />
+								<path stroke="black" stroke-width="4" d="M 0,50 L 50,0" />
+							</svg>
+						</div>
+						<div id="anim_block_6">
+							<svg width="150" height="150">
+								<path stroke="black" fill="white" stroke-width="4" d="M 0,50 L 100,50 100,0 150,0 150,150 100,150 100,100 0,100 z" />
+								<path stroke="black" stroke-width="4" d="M 2,50 L 2,100" />
+								<path stroke="black" stroke-width="4" d="M 148,0 L 148,150" />
+								<path stroke="black" stroke-width="4" d="M 148,0 L 148,150" />
+								<path stroke="black" stroke-width="4" d="M 100,2 L 150,2" />
+								<path stroke="black" stroke-width="4" d="M 100,148 L 150,148" />
+								<path stroke="black" fill="none" stroke-width="4" d="M 0,75 C 0,75 25,75 25,100 M 0,50 C 0,50 50,50 50,100 M 0,50 C 0,50 50,50 50,100 M 50,50 C 50,50 50,100 100,100 100,100 146,100 146,48 146,48 146,2 100,2 M 100,25 C 100,25 125,25 125,50 125,50 125,75 100,75 100,75 75,75 75,50 M 100,150 C 100,150 100,100 150,100 M 125,150 C 125,150 125,125 150,125" />
+							</svg>
+						</div>
+						<div id="anim_block_7">
+							<svg width="150" height="150">
+								<path stroke="black" fill="white" stroke-width="4" d="M 0,0 L 50,0 50,50 150,50 150,100 50,100 50,150 0,150 z" />
+								<path stroke="black" fill="none" stroke-width="4" d="M 0,0 L 0,0 50,50 0,100 50,150 M 0,50 L 0,50 50,50 M 100,50 L 100,50 150,100 M 150,50 L 150,50 125,75" />
+								<path stroke="black" fill="none" stroke-width="4" d="M 50,2 L 2,2 2,148 50,148 M 148,50 L 148,100"/>
+							</svg>
+						</div>
+						<div id="anim_block_8">
+							<svg width="100" height="100">
+								<path stroke="black" fill="white" stroke-width="8" d="M 0,0 L 0,0 100,0 100,100 0,100 z" />
+								<path stroke="black" fill="none" stroke-width="4" d=" M 0,100 L 100,0" />
+							</svg>
+						</div>
+						<div id="anim_block_9">
+							<svg width="150" height="150">
+								<path stroke="black" fill="white" stroke-width="4" d="M 50,0 L 100,0 100,100 150,100 150,150 0,150 0,100 50,100 z" />
+								<path stroke="black" fill="black" stroke-width="2" d="M 3,100 v 150 M 147,100 v 150 M 0,147 h 150 M 50,3 h 50" />
+								<!-- <path stroke="black" fill="none" stroke-width="4" d="M -75,12 q 25,16 50,0 25,-16 50,0 25,16 50,0 25,-16 50,0 M -75,28 q 25,16 50,0 25,-16 50,0 25,16 50,0 25,-16 50,0 M -75,44 q 25,16 50,0 25,-16 50,0 25,16 50,0 25,-16 50,0 M -75,60 q 25,16 50,0 25,-16 50,0 25,16 50,0 25,-16 50,0 M -75,76 q 25,16 50,0 25,-16 50,0 25,16 50,0 25,-16 50,0 M -75,92 q 25,16 50,0 25,-16 50,0 25,16 50,0 25,-16 50,0 M -75,108 q 25,12 50,0 25,-12 50,0 25,12 50,0 25,-12 50,0 25,12 50,0 M -75,124 q 25,12 50,0 25,-12 50,0 25,12 50,0 25,-12 50,0 25,12 50,0 M -75,140 q 25,12 50,0 25,-12 50,0 25,12 50,0 25,-12 50,0 25,12 50,0" /> -->
+								<path stroke="black" fill="none" stroke-width="4" d="M 50,18 q 13,1 25,-6 13,-7 25,-6 M 50,35 q 13,1 25,-6 13,-7 25,-6 M 50,52 q 13,1 25,-6 13,-7 25,-6 M 50,68 q 13,1 25,-6 13,-7 25,-6 M 50,84 q 13,1 25,-6 13,-7 25,-6 M 50,100 q 13,1 25,-6 13,-7 25,-6 M -75,108 q 25,12 50,0 25,-12 50,0 25,12 50,0 25,-12 50,0 25,12 50,0 M -75,124 q 25,12 50,0 25,-12 50,0 25,12 50,0 25,-12 50,0 25,12 50,0 M -75,140 q 25,12 50,0 25,-12 50,0 25,12 50,0 25,-12 50,0 25,12 50,0" />
+							</svg>
+						</div>
+						<div id="anim_block_10">
+							<svg width="50" height="50">
+								<path stroke="black" fill="white" stroke-width="8" d="M 0,0 L 0,0 50,0 50,50 0,50 z" />
+								<path stroke="black" stroke-width="4" d="M 0,50 L 50,0" />
+							</svg>
+						</div>
 					</div>
-					<div id="anim_block_5">
-						<svg width="50" height="50">
-							<path stroke="black" fill="white" stroke-width="8" d="M 0,0 L 0,0 50,0 50,50 0,50 z" />
-							<path stroke="black" stroke-width="4" d="M 0,50 L 50,0" />
-						</svg>
-					</div>
-					<div id="anim_block_6">
-						<svg width="150" height="150">
-							<path stroke="black" fill="white" stroke-width="4" d="M 0,50 L 100,50 100,0 150,0 150,150 100,150 100,100 0,100 z" />
-							<path stroke="black" stroke-width="4" d="M 2,50 L 2,100" />
-							<path stroke="black" stroke-width="4" d="M 148,0 L 148,150" />
-							<path stroke="black" stroke-width="4" d="M 148,0 L 148,150" />
-							<path stroke="black" stroke-width="4" d="M 100,2 L 150,2" />
-							<path stroke="black" stroke-width="4" d="M 100,148 L 150,148" />
-							<path stroke="black" fill="none" stroke-width="4" d="M 0,75 C 0,75 25,75 25,100 M 0,50 C 0,50 50,50 50,100 M 0,50 C 0,50 50,50 50,100 M 50,50 C 50,50 50,100 100,100 100,100 146,100 146,48 146,48 146,2 100,2 M 100,25 C 100,25 125,25 125,50 125,50 125,75 100,75 100,75 75,75 75,50 M 100,150 C 100,150 100,100 150,100 M 125,150 C 125,150 125,125 150,125" />
-						</svg>
-					</div>
-					<div id="anim_block_7">
-						<svg width="150" height="150">
-							<path stroke="black" fill="white" stroke-width="4" d="M 0,0 L 50,0 50,50 150,50 150,100 50,100 50,150 0,150 z" />
-							<path stroke="black" fill="none" stroke-width="4" d="M 0,0 L 0,0 50,50 0,100 50,150 M 0,50 L 0,50 50,50 M 100,50 L 100,50 150,100 M 150,50 L 150,50 125,75" />
-							<path stroke="black" fill="none" stroke-width="4" d="M 50,2 L 2,2 2,148 50,148 M 148,50 L 148,100"/>
-						</svg>
-					</div>
-					<div id="anim_block_8">
-						<svg width="100" height="100">
-							<path stroke="black" fill="white" stroke-width="8" d="M 0,0 L 0,0 100,0 100,100 0,100 z" />
-							<path stroke="black" fill="none" stroke-width="4" d=" M 0,100 L 100,0" />
-						</svg>
-					</div>
-					<div id="anim_block_9">
-						<svg width="150" height="150">
-							<path stroke="black" fill="white" stroke-width="4" d="M 50,0 L 100,0 100,100 150,100 150,150 0,150 0,100 50,100 z" />
-							<path stroke="black" fill="black" stroke-width="2" d="M 3,100 v 150 M 147,100 v 150 M 0,147 h 150 M 50,3 h 50" />
-							<path stroke="black" fill="none" stroke-width="4" d="M 0,100 C 25,108 30,100 50,108" 
-						</svg>
-					</div>
-					<div class="tob_block_text">
-						<div class="top_block_title"><h1>Таблица</h1></div>
-						<p>новое рабочее пространство в центре Москвы, созданное с тщательным подходом к оформлению и планировкам</p>
-						<p>это новый уровень офиса, где хочется создавать, работать и развиваться</p>
+					<div class="top_block_center">
+						<div class="tob_block_text">
+							<div class="top_block_title"><h1>Таблица</h1></div>
+							<p>новое рабочее пространство в центре Москвы, созданное с тщательным подходом к оформлению и планировкам</p>
+							<p>это новый уровень офиса, где хочется создавать, работать и развиваться</p>
+						</div>
 					</div>
 				</div>
 				<div class="inner_block next_inner_item" data-to-load="1.html">
