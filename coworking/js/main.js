@@ -277,7 +277,7 @@ $(function(){
 	})
 
 	// TOP NAV AVIMATION
-	$('.top_nav a').click(function(e){
+	$('.top_nav ul a').click(function(e){
 		e.preventDefault();
 		var href = $(this).attr('href');
 		// $(href).css({'left':'100%','display':'block'}).addClass('toActiveForce');

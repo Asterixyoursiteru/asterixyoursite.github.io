@@ -157,6 +157,94 @@ body{
 	height: 50px;
 	width: 100%;
 	z-index: 100;
+	padding-left: 70px;
+	padding-right: 50px;
+	box-sizing: border-box;
+}
+.top_nav .top_nav_gallery_arrow_right{
+	width: 50px;
+	height: 50px;
+    background: #fff;
+    border-top: 4px solid #000;
+    border-right: 4px solid #000;
+    border-bottom: 4px solid #000;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    right: 0;
+    line-height: 42px;
+}
+.top_nav .top_gallery_arrow_right{
+	width: 32px;
+	height: 32px;
+	border: 4px solid black;
+	border-radius: 100%;
+	background-color: #FFC530;
+	box-sizing: border-box;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    cursor: pointer;
+}
+.top_nav .top_gallery_arrow_right::before{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 4px;
+    background-color: #000;
+    width: 16px;
+    border-radius: 50px;
+    left: -1px;
+    margin: auto;
+    z-index: 1;
+}
+.top_nav .top_gallery_arrow_right>div::before, .top_nav .top_gallery_arrow_right>div::after{
+    content: '';
+    display: block;
+    position: absolute;
+    height: 4px;
+    width: 12px;
+    background-color: #000;
+    border-radius: 50px;
+    margin: auto;
+    left: 8px;
+}
+.top_nav .top_gallery_arrow_right>div::before{
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    top: 0;
+    bottom: 7px;
+}
+.top_nav .top_gallery_arrow_right>div::after{
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    top: 7px;
+    bottom: 0;
+}
+#main_page_link{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 70px;
+	height: 70px;
+	background: #fff;
+	border: 4px solid #000;
+	box-sizing: border-box;
+}
+#main_page_link img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
 }
 .top_nav ul li{
 	display: inline-block;
@@ -495,4 +583,47 @@ p{
 }
 #anim_block_10.anim{
     margin-left: -270px;
+}
+.v_nav{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 50px;
+    z-index: 100;
+    padding-top: 70px;
+    box-sizing: border-box;
+}
+.v_nav ul {
+	display: block;
+	height: 100%;
+	width: 100%;
+}
+.v_nav ul li {
+    display: block;
+    width: 50px;
+    vertical-align: top;
+    text-align: center;
+    background: #fff;
+    border-left: 4px solid #000;
+    border-right: 4px solid #000;
+    border-bottom: 4px solid #000;
+    box-sizing: border-box;
+    cursor: pointer;
+    height: 16.666667%;
+    position: relative;
+}
+.v_nav ul li a {
+    display: block;
+    text-transform: lowercase;
+    text-decoration: none;
+    font-size: 12px;
+    color: #000;
+    font-weight: bold;
+    -moz-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+    -webkit-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+    transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+    position: absolute;
+    top: 50%;
+    left: 50%;
 }
