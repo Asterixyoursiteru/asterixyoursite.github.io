@@ -393,17 +393,32 @@ p{
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	transition: all .3s ease;
+	transition: all 2s ease-in-out;
+}
+.anim_top_block_wrapper>div.anim{
 }
 #anim_block_1{
 	width: 150px;
 	height: 146px;
-    margin-left: -420px;
-    margin-top: -294px;
+    /*margin-left: -420px;
+    margin-top: -294px;*/
+    margin-left: -1420px;
+    margin-top: -1294px;
+    transition-delay: .3s;
+    -webkit-transform: rotate(900deg);
+    -moz-transform: rotate(900deg);
+    -ms-transform: rotate(900deg);
+    -o-transform: rotate(900deg);
+    transform: rotate(900deg);
 }
 #anim_block_1.anim{
     margin-left: -367px;
     margin-top: -194px;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
 }
 #anim_block_1>div{
 	background-color: #fff;
@@ -448,12 +463,25 @@ p{
 	background-color: #fff;
 	box-sizing: border-box;
 	overflow: hidden;
-    margin-top: -148px;
-    margin-left: 26px;
+    /*margin-top: -148px;
+    margin-left: 26px;*/
+    margin-top: -1148px;
+    margin-left: 1026px;
+    transition-delay: .5s;
+    -webkit-transform: rotate(900deg);
+    -moz-transform: rotate(900deg);
+    -ms-transform: rotate(900deg);
+    -o-transform: rotate(900deg);
+    transform: rotate(900deg);
 }
 #anim_block_2.anim{
     margin-top: -98px;
     margin-left: -24px;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
 }
 #anim_block_2 div{
     transform: rotateZ(90deg);
@@ -476,12 +504,25 @@ p{
 #anim_block_3{
 	width: 100px;
 	height: 100px;
-	margin-top: -348px;
-	margin-left: 228px;
+	/*margin-top: -348px;
+	margin-left: 228px;*/
+	margin-top: -1348px;
+	margin-left: 1228px;
+    transition-delay: .4s;
+    -webkit-transform: rotate(900deg);
+    -moz-transform: rotate(900deg);
+    -ms-transform: rotate(900deg);
+    -o-transform: rotate(900deg);
+    transform: rotate(900deg);
 }
 #anim_block_3.anim{
     margin-top: -148px;
 	margin-left: 172px;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
 }
 #anim_block_3>div{
 	background-color: #fff;
@@ -520,69 +561,163 @@ p{
 #anim_block_4{
 	width: 150px;
 	height: 150px;
-	margin-top: -198px;
-	margin-left: 319px;
+	/*margin-top: -198px;
+	margin-left: 319px;*/
+	margin-top: -1198px;
+	margin-left: 1319px;
+    transition-delay: .2s;
+    -webkit-transform: rotate(900deg);
+    -moz-transform: rotate(900deg);
+    -ms-transform: rotate(900deg);
+    -o-transform: rotate(900deg);
+    transform: rotate(900deg);
 }
 #anim_block_4.anim{
     margin-top: -150px;
     margin-left: 268px;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
 }
 #anim_block_5{
 	width: 50px;
 	height: 50px;
-    margin-left: 366px;
-    margin-top: 96px;
+    /*margin-left: 366px;
+    margin-top: 96px;*/
+    margin-left: 1366px;
+    margin-top: 1096px;
+    transition-delay: .2s;
+    -webkit-transform: rotate(900deg);
+    -moz-transform: rotate(900deg);
+    -ms-transform: rotate(900deg);
+    -o-transform: rotate(900deg);
+    transform: rotate(900deg);
 }
 #anim_block_5.anim{
     margin-left: 316px;
+    margin-top: 96px;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
 }
 #anim_block_6{
 	width: 150px;
 	height: 150px;
-    margin-top: 196px;
-    margin-left: 220px;
+    /*margin-top: 196px;
+    margin-left: 220px;*/
+    margin-top: 1196px;
+    margin-left: 1220px;
+    transition-delay: .6s;
+    -webkit-transform: rotate(900deg);
+    -moz-transform: rotate(900deg);
+    -ms-transform: rotate(900deg);
+    -o-transform: rotate(900deg);
+    transform: rotate(900deg);
 }
 #anim_block_6.anim{
     margin-top: 96px;
     margin-left: 170px;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
 }
 #anim_block_7{
 	width: 150px;
 	height: 150px;
-    margin-left: -34px;
-    margin-top: 244px;
+    /*margin-left: -34px;
+    margin-top: 244px;*/
+    margin-left: -1034px;
+    margin-top: 1244px;
+    transition-delay: .4s;
+    -webkit-transform: rotate(900deg);
+    -moz-transform: rotate(900deg);
+    -ms-transform: rotate(900deg);
+    -o-transform: rotate(900deg);
+    transform: rotate(900deg);
 }
 #anim_block_7.anim{
+	margin-left: -34px;
     margin-top: 144px;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
 }
 #anim_block_8{
 	width: 100px;
 	height: 100px;
-    margin-top: 194px;
-    margin-left: -178px;
+    /*margin-top: 194px;
+    margin-left: -178px;*/
+    margin-top: 1194px;
+    margin-left: -1178px;
+    transition-delay: .5s;
+    -webkit-transform: rotate(900deg);
+    -moz-transform: rotate(900deg);
+    -ms-transform: rotate(900deg);
+    -o-transform: rotate(900deg);
+    transform: rotate(900deg);
 }
 #anim_block_8.anim{
     margin-top: 144px;
     margin-left: -130px;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
 }
 #anim_block_9{
 	width: 150px;
 	height: 150px;
-    margin-left: -470px;
-    margin-top: 146px;
+    /*margin-left: -470px;
+    margin-top: 146px;*/
+    margin-left: -1470px;
+    margin-top: 1146px;
+    transition-delay: .2s;
+    -webkit-transform: rotate(900deg);
+    -moz-transform: rotate(900deg);
+    -ms-transform: rotate(900deg);
+    -o-transform: rotate(900deg);
+    transform: rotate(900deg);
 }
 #anim_block_9.anim{
     margin-left: -276px;
     margin-top: 46px;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
 }
 #anim_block_10{
 	width: 50px;
 	height: 50px;
-	margin-left: -420px;
-    margin-top: -52px;
+	/*margin-left: -420px;
+    margin-top: -52px;*/
+	margin-left: -1420px;
+    margin-top: -1052px;
+    transition-delay: .3s;
+    -webkit-transform: rotate(900deg);
+    -moz-transform: rotate(900deg);
+    -ms-transform: rotate(900deg);
+    -o-transform: rotate(900deg);
+    transform: rotate(900deg);
 }
 #anim_block_10.anim{
+	margin-top: -52px;
     margin-left: -270px;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
 }
 .v_nav{
     position: absolute;
