@@ -34,9 +34,11 @@ $(function(){
 	var updateGalleryClasses = function(item){
 		checkItemOnContinue(item);
 		if(item.hasClass('prev_item')){
+			item.find('.active_inner').attr('style','');
 			item.removeClass('prev_item toActive').addClass('active_drag').draggable(draggableOptions).prev().addClass('prev_item');
 			item.next().attr('style','').removeClass('active_drag').draggable("destroy").addClass('next_item').next().attr('style','').removeClass('next_item');
 		}else if(item.hasClass('next_item')){
+			item.find('.active_inner').attr('style','');
 			item.removeClass('next_item toActive').addClass('active_drag').draggable(draggableOptions).next().addClass('next_item');
 			item.prev().attr('style','').removeClass('active_drag').draggable("destroy").addClass('prev_item').prev().attr('style','').removeClass('prev_item');
 		}else{
@@ -136,7 +138,7 @@ $(function(){
 					if(!prevItem.length){
 						ui.position.left /= NOBLOCKONSIDESPEED;
 					}else{
-						prevItem.attr('style', 'left: ' + calcPrevItem() + 'px');
+						prevItem.attr('style', 'left: ' + calcPrevItem() + 'px').find('.active_inner').css('display','block');
 					}
 					break;
 				// IF MOVE BLOCK TO left SIDE
@@ -144,7 +146,7 @@ $(function(){
 					if(!nextItem.length){
 						ui.position.left /= NOBLOCKONSIDESPEED;
 					}else{
-						nextItem.attr('style','transform: perspective(500px) translateX(' + calcNextItem(-2, 0) + '%) scale(' + calcNextItem(0.1, 1, true) + ') rotateY(' + calcNextItem(-20, 2) + 'deg); opacity: ' + calcNextItem(0.33, 3, true));
+						nextItem.attr('style','transform: perspective(500px) translateX(' + calcNextItem(-2, 0) + '%) scale(' + calcNextItem(0.1, 1, true) + ') rotateY(' + calcNextItem(-20, 2) + 'deg); opacity: ' + calcNextItem(0.33, 3, true)).find('.active_inner').css('display','block');;
 					}
 					break;
 			}
@@ -235,8 +237,8 @@ $(function(){
 				console.log('3');
 				$(this).animate({left: '0px'},500, function(){
 					$(this).attr('style','');
-					nextItem.attr('style','');
-					prevItem.attr('style','');
+					nextItem.attr('style','').find('.active_inner').attr('style','');
+					prevItem.attr('style','').find('.active_inner').attr('style','');
 				});
 			}else if(Math.abs(ui.position.top) <= OFFSETTOBLOCKCHANGE && Math.abs(ui.position.top) !== 0){
 				console.log('4');

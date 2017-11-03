@@ -305,12 +305,13 @@ body{
 	height: 100%;
 	background: #fff;
 	z-index: 3;
+	display: none;
 }
 #ajaxloader {
   position: fixed;
   left: 0;
   top: 0;
-  z-index: 999;
+  z-index: 99;
   width: 100%;
   height: 100px;
   overflow: visible;
@@ -335,6 +336,9 @@ body{
 }
 .inner_block.prev_inner_item{
 	top: -100%;
+}
+.active_drag .inner_block.active_inner, .active_drag .inner_block.next_inner_item, .active_drag .inner_block.prev_inner_item{
+	display: block;
 }
 .inner_block.red{
 	background: red;
